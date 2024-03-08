@@ -1,7 +1,6 @@
 {
   "manifest_version": 3,
   "name": "Ones Sync",
-  "$schema": "https://json.schemastore.org/chrome-manifest.json",
   "version": "0.1.0",
   "description": "My Chrome Extension",
   "icons": {
@@ -17,18 +16,12 @@
     "default_title": "Ones Sync",
     "default_popup": "popup.html"
   },
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage", "clipboardRead", "declarativeContent"],
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
+      "matches": ["<all_urls>"],
       "run_at": "document_idle",
-      "js": [
-        "contentScript.js"
-      ]
+      "js": ["contentScript.js"]
     }
   ]
 }

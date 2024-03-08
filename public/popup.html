@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>My Chrome Extension</title>
-    <link rel="stylesheet" href="popup.css" />
+  <meta charset="UTF-8">
+  <title>Ones Sync</title>
+  <link rel="stylesheet" href="popup.css" />
 </head>
+
 <body>
   <div class="app">
-    <p class="counter-label">Counter</p>
-    <div id="counter" class="counter"></div>
-    <div class="button-container">
-      <button id="decrementBtn" class="button">-</button>
-      <button id="incrementBtn" class="button">+</button>
-    </div>
+    <h3 class="display-3">Ones Sync<span class="fs-6 fw-bold fst-italic">v1.1</span></h3>
+    <h6>发现格式错乱请检查单元格内是否有换行，有的话请删除</h6>
+    <button type="button" class="btn btn-primary" id="xls">解析剪贴板</button>
+
+    <table class="table" id="data">
+
+    </table>
+
+    <h6>请仔细确认工时情况，提交后只能在ones上删除</h6>
+    <button type="button" class="btn btn-primary" id="submit">提交ones</button>
+
+    <div id="notes"></div>
 
     <hr class="divider" />
 
-    <p class="title">Chrome Extension is Ready!</p>
-    <p class="subtitle">Start by updating <code>popup.html</code></p>
+    <p class="title">Powered by ZhenXiang</p>
+
   </div>
 
   <script src="popup.js"></script>
@@ -29,4 +37,5 @@
     To create a production bundle, use `npm run build`.
   -->
 </body>
+
 </html>
