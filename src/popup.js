@@ -167,7 +167,7 @@ ${renderStatus(d.status, i, d.reason)}
                 status: 0,
                 time: o.time.format("YYYY-MM-DD HH:mm:ss"),
                 task: t,
-                description: d[7],
+                description: d[2],
                 hours: o.hours,
               };
             })
@@ -200,6 +200,10 @@ ${renderStatus(d.status, i, d.reason)}
             ),
           },
           (response) => {
+            if (response == undefined) {
+              alert("提交失败");
+              return;
+            }
             console.log("ADD_MAN_HOURS: Res", response);
             if (response.error) {
               document.querySelector(
@@ -208,19 +212,20 @@ ${renderStatus(d.status, i, d.reason)}
             } else {
               response.success.forEach((o) => {
                 const tar = data.find(
-                  (x) => x.task === o.task && tar.status === 69
+                  (x) => x.task === o.task && x.status === 69
                 );
                 if (tar) tar.status = 1;
               });
               response.fail.forEach((o) => {
                 const tar = data.find(
-                  (x) => x.task === o.task && tar.status === 69
+                  (x) => x.task === o.task && x.status === 69
                 );
                 if (tar) {
                   tar.status = -1;
                   tar.reason = o.reason;
                 }
               });
+              console.log("Sync Response Status", data);
               chrome.storage.sync.set({ data });
               renderTable();
             }
